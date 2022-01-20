@@ -19,7 +19,7 @@ const Cart = () => {
       setCart(c);
       calculation(c);
     }
-  }, [count]);
+  }, [count, total]);
   // funtion for calculating gst , totalprice of order
   const calculation = (c) => {
     let sum1 = 0;
@@ -28,10 +28,11 @@ const Cart = () => {
       sum1 += ele.price * ele.quantity;
       t += sum1;
       setSubTotal(t);
-      setGst((t * 5) / 100);
-      setTotal(t + gst);
+
       sum1 = 0;
     });
+    setGst((t * 5) / 100);
+    setTotal(t + gst);
   };
   // function for increasing the quantity of product in cart
   const incremet = (obj) => {
